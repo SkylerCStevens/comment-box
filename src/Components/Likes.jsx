@@ -24,10 +24,10 @@ class ThumbsUpDown extends Component {
         const { upCount, downCount } = this.state
         return(
             <div>
-            <button className="inline" value="thumbsUp" onClick={this.handleLikeChange}>Thumbs Up</button>
-            <p className="inline">{upCount} people like this</p>
-            <button className="inline" value="thumbsDown" onClick={this.handleLikeChange}>Thumbs Down</button>
-            <p className="inline">{downCount} people dislike this</p>
+            <p className="inline mr-1">{upCount} people like this</p>
+            <button className="inline btn btn-info mr-3" value="thumbsUp" onClick={this.handleLikeChange}>Thumbs Up</button>
+            <p className="inline mr-1">{downCount} people dislike this</p>
+            <button className="inline btn btn-danger" value="thumbsDown" onClick={this.handleLikeChange}>Thumbs Down</button>
             </div>
             )
         }

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import ThumbsUpDown from './Likes'
-import Reply from './Reply'
+import ThumbsUpDown from './Components/Likes'
+import Reply from './Components/Reply'
+
+import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
   state = {
@@ -66,18 +68,20 @@ class App extends Component {
     const {comment, commentList } = this.state
     
     return(
-      <div>
-      <form onSubmit={e => this.handleSubmit(e)}>
-      <input type="text" name="comment" value={comment} onChange={this.handleChange}/>
-      <button type="submit">Comment</button>
+      <div className="first-comment">
+      <form className="container" onSubmit={e => this.handleSubmit(e)}>
+      <label className="hidden" htmlFor="comment">Comment:</label>
+      <input className="comment-box" type="text" name="comment" value={comment} onChange={this.handleChange} placeholder="Leave a comment" id="comment" />
+      <button className="btn btn-primary submit-btn ml-3" type="submit">Comment</button>
       </form>
+      <div className="container">
       {commentList.map((postComment, index) => (
-        <div key={index} className="ml">
-        <p className="inline">{postComment.comment}</p>
+        <div key={index} className="ml comment-card">
+        <p className="inline comment-text">{postComment.comment}</p>
         <div key={index}>
         {<ThumbsUpDown />}
         </div>
-        <button className="inline" value={index} onClick={this.removeItem}>Delete</button>
+        <button className="inline btn btn-secondary mt-1" value={index} onClick={this.removeItem}>Delete</button>
         <ul className="replyList">
         {<Reply 
           commentId={postComment.id}
@@ -90,6 +94,7 @@ class App extends Component {
           </div>)
           )
         }
+        </div>
         </div>
         )
       }
